@@ -13,6 +13,7 @@ public class Main {
         bubbleSort(arr);
         int[] arr2 = {1, 0, 5, 61, 26, 1};
         bubbleSort(arr2);
+        bubbleSort(arr2);
 
         /*Scanner sc = new Scanner(System.in);
         System.out.println("Choose program(1-6)");
