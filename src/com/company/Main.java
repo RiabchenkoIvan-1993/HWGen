@@ -9,11 +9,26 @@ public class Main {
     private static final String password = "ttt";
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 5, 4, 26, 1};
-        bubbleSort(arr);
-        int[] arr2 = {1, 0, 5, 61, 26, 1};
-        bubbleSort(arr2);
-        bubbleSort(arr2);
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        String[] numbers = input.split("\\s+");
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i].length() > numbers[j].length()) {
+                    String temp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                }
+            }
+        }
+        System.out.println(numbers[0] + " the shortest. Length: " + numbers.length);
+        System.out.println(numbers[numbers.length - 1] + " the longest. Length: " + numbers.length);
+        System.out.println(Arrays.toString(numbers));
+        for (int i = 0; i < numbers.length / 2; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println("");
 
         /*Scanner sc = new Scanner(System.in);
         System.out.println("Choose program(1-6)");
