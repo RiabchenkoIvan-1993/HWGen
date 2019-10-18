@@ -22,13 +22,45 @@ public class Main {
                 }
             }
         }
-        System.out.println(numbers[0] + " the shortest. Length: " + numbers.length);
-        System.out.println(numbers[numbers.length - 1] + " the longest. Length: " + numbers.length);
+        System.out.println(numbers[0] + " the shortest. Length: " + numbers[0].length());
+        System.out.println(numbers[numbers.length - 1] + " the longest. Length: " + numbers[numbers.length - 1].length());
         System.out.println(Arrays.toString(numbers));
         for (int i = 0; i < numbers.length / 2; i++) {
             System.out.print(numbers[i] + " ");
         }
         System.out.println("");
+
+        String smallestAmountOfUniqueSymbols = numbers[0];
+        int evenOnlyAmount = 0;
+        for (String number : numbers) {
+            if (numberOfUniqueSymbols(number) < numberOfUniqueSymbols(smallestAmountOfUniqueSymbols)) {
+                smallestAmountOfUniqueSymbols = number;
+            }
+            if (evenAmount(number) == number.length()) {
+                evenOnlyAmount++;
+            }
+        }
+        System.out.println(smallestAmountOfUniqueSymbols + " smallest amount of unique symbols");
+        System.out.println(evenOnlyAmount + " even symbols only amount");
+
+        for (String number : numbers) {
+            String[] numAsArray = number.split("");
+            int[] numAsIntArray = new int[numAsArray.length];
+            for (int i = 0; i < numAsArray.length; i++) {
+                numAsIntArray[i]=Integer.parseInt(numAsArray[i]);
+            }
+            Arrays.sort(numAsIntArray);
+            int similarCount=0;
+            for (int i = 0; i < numAsArray.length; i++) {
+                if (numAsIntArray[i]==Integer.parseInt(numAsArray[i])) {
+                    similarCount++;
+                }
+            }
+            if (similarCount==numAsArray.length) {
+                System.out.println(number+" symbols from smallest to biggest");
+                break;
+            }
+        }
 
         /*Scanner sc = new Scanner(System.in);
         System.out.println("Choose program(1-6)");
@@ -54,6 +86,34 @@ public class Main {
                 break;
         }*/
 
+    }
+
+    private static int evenAmount(String number) {
+        String numberAsArray[] = number.split("");
+        int evenAmount = 0;
+        for (String s : numberAsArray) {
+            if (Integer.parseInt(s) % 2 == 0) {
+                evenAmount++;
+            }
+        }
+        return evenAmount;
+    }
+
+    private static int numberOfUniqueSymbols(String number) {
+        String numberAsArray[] = number.split("");
+        int uniqueCount = 0;
+        for (String s : numberAsArray) {
+            int unique = 0;
+            for (String s1 : numberAsArray) {
+                if (!s.equals(s1)) {
+                    unique++;
+                }
+            }
+            if (unique == numberAsArray.length - 1) {
+                uniqueCount++;
+            }
+        }
+        return uniqueCount;
     }
 
     private static void bubbleSort(int[] arr) {
