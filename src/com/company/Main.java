@@ -10,6 +10,10 @@ public class Main {
     private static final String password1 = "ttt";
     private static final String password2 = "ttt";
     private static final String password3 = "ttt";
+    private static final String password3 = "ttt";
+    private static final String password3 = "ttt";
+    private static final String password3 = "ttt";
+    private static final String password3 = "ttt";
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
