@@ -1,5 +1,6 @@
 package com.company;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
@@ -47,21 +48,99 @@ public class Main {
             String[] numAsArray = number.split("");
             int[] numAsIntArray = new int[numAsArray.length];
             for (int i = 0; i < numAsArray.length; i++) {
-                numAsIntArray[i]=Integer.parseInt(numAsArray[i]);
+                numAsIntArray[i] = Integer.parseInt(numAsArray[i]);
             }
             Arrays.sort(numAsIntArray);
-            int similarCount=0;
+            int similarCount = 0;
             for (int i = 0; i < numAsArray.length; i++) {
-                if (numAsIntArray[i]==Integer.parseInt(numAsArray[i])) {
+                if (numAsIntArray[i] == Integer.parseInt(numAsArray[i])) {
                     similarCount++;
                 }
             }
-            if (similarCount==numAsArray.length) {
-                System.out.println(number+" symbols from smallest to biggest");
+            if (similarCount == numAsArray.length) {
+                System.out.println(number + " symbols from smallest to biggest");
                 break;
             }
         }
 
+        //7
+        for (String number : numbers) {
+            if (numberOfUniqueSymbols(number) == number.length()) {
+                System.out.println(number + " all symbols unique");
+                break;
+            }
+        }
+
+
+        //9
+        System.out.println("Task 9. Enter n-size");
+        Scanner sc1 = new Scanner(System.in);
+        int n = Integer.parseInt(sc1.nextLine());
+
+        //matrix init
+        int matrix[][] = new int[n][n];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int i1 = 0; i1 < matrix.length; i1++) {
+                matrix[i][i1] = (int) Math.round(Math.random() * 10 - 5);
+            }
+            bubbleSort(matrix[i]);
+        }
+
+        //а так не может заполнить массив. Почему?
+        /*for (int[] ints : matrix) {
+            for (int anInt : ints) {
+                anInt= (int) Math.round(Math.random()*10-5);
+                System.out.println(anInt);
+            }
+        }*/
+
+        System.out.println(Arrays.deepToString(matrix) + " sorted by table strings");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length - 1; j++) {
+                if (matrix[j][i] > matrix[j + 1][i]) {
+                    int tmp = matrix[j][i];
+                    matrix[j][i] = matrix[j + 1][i];
+                    matrix[j + 1][i] = tmp;
+                }
+            }
+        }
+
+        System.out.println(Arrays.deepToString(matrix) + " sorted by table row");
+
+        //9.2
+        int shift = 2;
+        int shiftedMatrix[][]=new int[n][n];
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                shiftedMatrix[i][j]=matrix[i][(j+shift)%n];
+            }
+        }
+        System.out.println(Arrays.deepToString(shiftedMatrix) + " shifted right");
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                shiftedMatrix[i][j]=matrix[(i+shift)%n][j];
+            }
+        }
+        System.out.println(Arrays.deepToString(shiftedMatrix) + " shifted down");
+
+        //9.3
+        int count=0;
+        int record=0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length-1; j++) {
+                if (matrix[i][j] < matrix[i][j + 1]) {
+                    count++;
+                } else {
+                    if (record<count) {
+                        record=count;
+                    }
+                    count=0;
+                }
+            }
+        }
+        System.out.println(record + " max length of increasing sequence");
         /*Scanner sc = new Scanner(System.in);
         System.out.println("Choose program(1-6)");
         int program = sc.nextInt();
@@ -126,7 +205,7 @@ public class Main {
                 }
             }
         }
-        System.out.println(Arrays.toString(arr));
+        //System.out.println(Arrays.toString(arr));
     }
 
     private static void six() {
