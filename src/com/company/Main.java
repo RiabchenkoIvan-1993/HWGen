@@ -6,9 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    private static final String password89465165165 = "ttt";
-    private static final String password89465165165 = "ttt";
-    private static final String jdk=new String();
+    private static final String password = "ttt";
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
