@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    private static final String password = "ttt";
+    private static final String password = "ttt1234567";
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
