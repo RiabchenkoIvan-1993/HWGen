@@ -9,7 +9,7 @@ public class Main {
     private static final String password = "ttt";
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         String[] numbers = input.split("\\s+");
 
@@ -60,7 +60,7 @@ public class Main {
                 System.out.println(number+" symbols from smallest to biggest");
                 break;
             }
-        }
+        }*/
 
         /*Scanner sc = new Scanner(System.in);
         System.out.println("Choose program(1-6)");
