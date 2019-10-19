@@ -10,7 +10,6 @@ public class Main {
     private static final String password1 = "ttt";
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         String[] numbers = input.split("\\s+");
